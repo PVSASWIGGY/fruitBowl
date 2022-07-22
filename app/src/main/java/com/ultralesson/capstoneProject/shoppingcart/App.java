@@ -2,12 +2,14 @@ package com.ultralesson.capstoneProject.shoppingcart;
 
 public class App {
     public static void main(String[] args) {
-        Person person=new Person("Akhil");
-        Item apple=new Apple(2);
+        Wallet wallet=new Wallet("Akhil");
+        ShoppingCart shoppingCart=new ShoppingCart();
+        Person person=new Person("Akhil",wallet,shoppingCart);
+        Item apple=new Item("apple",2);
         person.addItem(apple);
-        Item milk=new Milk(3);
+        Item milk=new Item("milk",3);
         person.addItem(milk);
-        Item newsPaper=new NewsPaper(1);
+        Item newsPaper=new Item("news paper",1);
         person.addItem(newsPaper);
         System.out.println(person.getShoppingCart().getTotalPrice());
         person.getWallet().addMoney(500);

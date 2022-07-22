@@ -5,10 +5,10 @@ public class Person {
     private Wallet wallet;
     private ShoppingCart shoppingCart;
 
-    public Person(String name){
+    public Person(String name,Wallet wallet,ShoppingCart shoppingCart){
         this.name=name;
-        shoppingCart=new ShoppingCart();
-        wallet=new Wallet();
+        this.wallet=wallet;
+        this.shoppingCart=shoppingCart;
     }
     public void addItem(Item newItem){
         shoppingCart.addItem(newItem);
@@ -18,7 +18,7 @@ public class Person {
         return this.shoppingCart;
     }
     public void payBill(){
-        if(wallet.deductMoney(shoppingCart.getTotalPrice())){
+        if(wallet.deductMoney(0.95*shoppingCart.getTotalPrice())){
             System.out.println("Payment successful");
         }
         else

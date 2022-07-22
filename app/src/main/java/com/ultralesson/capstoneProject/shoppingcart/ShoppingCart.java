@@ -7,11 +7,16 @@ public class ShoppingCart {
     public ShoppingCart(){
         items= new ArrayList<Item>();
     }
-    public int getTotalPrice(){
-        int totalPrice=0;
+    public double getTotalPrice(){
+        double totalPrice=0;
         for(Item item:items)
-            totalPrice+= item.priceCalculator();
+            totalPrice+= getItemPrice(item);
         return totalPrice;
+    }
+
+    public double getItemPrice(Item item){
+        PriceChart priceChart=new PriceChart();
+        return item.getQuantity()*priceChart.getPrice(item.getName());
     }
     public ArrayList<Item> getItems(){
         return items;
