@@ -5,6 +5,29 @@ package com.ultralesson.capstoneProject.fruitbowl;
 
 public class App {
     public static void main(String[] args) {
+        Color red=new Color(255);
+        Color green=new Color(0,255);
+        Taste sweet=new Taste("sweet");
+        Taste sour=new Taste("sour");
+        Fruit apple1=new Fruit("apple",red,sweet);
+        Fruit apple2=new Fruit("apple",red,sweet);
+        Fruit grapes=new Fruit("grapes",green,sour);
+        Fruit orange=new Fruit("orange",red,sour);
+        Fruit mango=new Fruit("mango",green,sour);
 
+        Bowl bowl=new Bowl();
+        bowl.addFruits(apple1);
+        bowl.addFruits(apple2);
+        bowl.addFruits(grapes);
+        bowl.addFruits(orange);
+        bowl.addFruits(mango);
+
+        Basket basket=new Basket(3);
+        System.out.println(basket.getLayers());
+        FruitsSegregator fruitsSegregator=new FruitsSegregator();
+        fruitsSegregator.segregateByName(bowl,basket);
+        for(Bowl bowl1: basket.getLayers()){
+            System.out.println(bowl1.getFruits());
+        }
     }
 }

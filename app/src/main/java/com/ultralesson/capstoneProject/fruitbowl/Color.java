@@ -16,4 +16,10 @@ public class Color {
     public Color(){
         this(0,0,0);
     }
+
+    public boolean equals(Color obj) {
+        if(this.red==obj.red && this.green==obj.green && this.blue==obj.blue)
+            return true;
+        return false;
+    }
 }

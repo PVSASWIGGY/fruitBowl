@@ -1,57 +1,30 @@
 package com.ultralesson.capstoneProject.fruitbowl;
 
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.List;
 
 public class FruitsSegregator {
-    public TreeSet getFruitsSet(ArrayList<Fruit> fruits){
-        TreeSet set=new TreeSet<>();
-        fruits.forEach(fruit->{
-            set.add(fruit.getName());
-        });
-        return set;
-    }
-
-    public BasketStand segregateByName(Bowl bowl,BasketStand basket){
+    public Basket segregateByName(Bowl bowl, Basket basket){
         ArrayList<Fruit> fruits = bowl.getFruits();
-        TreeSet<String> names=getFruitsSet(fruits);
-        ArrayList namesArray=new ArrayList<>();
-        names.forEach(name->{
-            namesArray.add(name);
-        });
+        List<String> namesArray = fruits.stream().map(fruit -> fruit.getName()).toList().stream().distinct().toList();
         for(int i=0;i<fruits.size();i++){
            int j=namesArray.indexOf(fruits.get(i).getName());
            basket.addFruit(j%basket.getNoOfLayers(),fruits.get(i));
         }
         return basket;
     }
-    public BasketStand segregateByColor(Bowl bowl,BasketStand basket){
-        Set<Color> colors=new TreeSet<>();
+    public Basket segregateByColor(Bowl bowl, Basket basket){
         ArrayList<Fruit> fruits = bowl.getFruits();
-        fruits.forEach(fruit->{
-            colors.add(fruit.getColor());
-        });
-        ArrayList colorsArray=new ArrayList<>();
-        colors.forEach(color->{
-            colorsArray.add(color);
-        });
+        List<Color> colorsArray = fruits.stream().map(fruit -> fruit.getColor()).toList().stream().distinct().toList();
         for(int i=0;i<fruits.size();i++){
             int j=colorsArray.indexOf(fruits.get(i).getColor())-1;
             basket.addFruit(j%basket.getNoOfLayers(),fruits.get(i));
         }
         return basket;
     }
-    public BasketStand segregateByTaste(Bowl bowl,BasketStand basket){
-        Set<Taste> tastes=new TreeSet<>();
+    public Basket segregateByTaste(Bowl bowl, Basket basket){
         ArrayList<Fruit> fruits = bowl.getFruits();
-        fruits.forEach(fruit->{
-            tastes.add(fruit.getTaste());
-        });
-        ArrayList tastesArray=new ArrayList<>();
-        tastes.forEach(taste->{
-            tastesArray.add(taste);
-        });
+        List<Taste> tastesArray = fruits.stream().map(fruit -> fruit.getTaste()).toList().stream().distinct().toList();
         for(int i=0;i<fruits.size();i++){
             int j=tastesArray.indexOf(fruits.get(i).getTaste());
             basket.addFruit(j% basket.getNoOfLayers(),fruits.get(i));

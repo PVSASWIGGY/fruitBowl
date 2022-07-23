@@ -31,4 +31,9 @@ public class Fruit {
     public Taste getTaste() {
         return taste;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

@@ -17,4 +17,10 @@ public class Taste {
     public Taste(){
         this("sweet",0);
     }
+
+    public boolean equals(Taste obj) {
+        if(this.name==obj.name && this.degree==obj.degree)
+            return true;
+        return false;
+    }
 }
