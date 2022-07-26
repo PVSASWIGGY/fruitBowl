@@ -2,24 +2,34 @@ package com.ultralesson.capstoneProject.fruitbowl;
 
 public class Color {
     private int red,green,blue;
-    public Color(int red,int green,int blue){
-        this.red=red;
-        this.blue=blue;
-        this.green=green;
-    }
-    public Color(int red,int green){
-        this(red,green,0);
-    }
-    public Color(int red){
-        this(red,0,0);
-    }
-    public Color(){
-        this(0,0,0);
+    private Color(Builder builder){
+        this.red=builder.red;
+        this.blue= builder.blue;
+        this.green=builder.green;
     }
 
     public boolean equals(Color obj) {
         if(this.red==obj.red && this.green==obj.green && this.blue==obj.blue)
             return true;
         return false;
+    }
+
+    public static class Builder{
+        private int red,blue,green;
+        public Builder setRed(int red) {
+            this.red = red;
+            return this;
+        }
+        public Builder setBlue(int blue) {
+            this.blue = blue;
+            return this;
+        }
+        public Builder setGreen(int green) {
+            this.green = green;
+            return this;
+        }
+        public Color createColor(){
+            return new Color(this);
+        }
     }
 }

@@ -22,6 +22,8 @@ public class Basket {
     }
 
     public void addFruit(int layerNo,Fruit fruit) {
+        if(layerNo>noOfLayers-1)
+            return;
         this.layers.get(layerNo).addFruits(fruit);
     }
 }

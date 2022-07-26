@@ -13,8 +13,12 @@ public class Item {
     }
     public void changeQuantity(int addQuantity){
         this.quantity+=addQuantity;
-    };
+    }
     public int getQuantity() {
         return quantity;
+    }
+
+    public boolean equals(Item obj) {
+        return this.name.equals(obj.name);
     }
 }

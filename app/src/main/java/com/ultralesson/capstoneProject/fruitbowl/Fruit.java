@@ -4,20 +4,10 @@ public class Fruit {
     private String name;
     private Color color;
     private Taste taste;
-
-    public Fruit(String name){
-        this(name,new Color(255),new Taste());
-    }
-    public Fruit(String name,Color color){
-        this(name,color,new Taste());
-    }
-    public Fruit(String name,Taste taste){
-        this(name,new Color(255),taste);
-    }
-    public Fruit(String name,Color color,Taste taste){
-        this.name=name;
-        this.color=color;
-        this.taste=taste;
+    public Fruit(Builder builder){
+        this.name=builder.name;
+        this.color=builder.color;
+        this.taste=builder.taste;
     }
 
     public String getName() {
@@ -35,5 +25,27 @@ public class Fruit {
     @Override
     public String toString() {
         return this.name;
+    }
+
+    public static class Builder{
+        String name;
+        Color color;
+        Taste taste;
+        public Builder(String name){
+            this.name=name;
+        }
+
+        public Builder setColor(Color color) {
+            this.color = color;
+            return this;
+        }
+
+        public Builder setTaste(Taste taste) {
+            this.taste = taste;
+            return this;
+        }
+        public Fruit createFruit(){
+            return new Fruit(this);
+        }
     }
 }

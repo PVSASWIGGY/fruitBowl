@@ -15,7 +15,7 @@ public class ShoppingCart {
     }
 
     public double getItemPrice(Item item){
-        PriceChart priceChart=new PriceChart();
+        PriceChart priceChart=PriceChart.getInstance();
         return item.getQuantity()*priceChart.getPrice(item.getName());
     }
     public ArrayList<Item> getItems(){

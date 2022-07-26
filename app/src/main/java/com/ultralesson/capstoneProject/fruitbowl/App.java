@@ -5,15 +5,30 @@ package com.ultralesson.capstoneProject.fruitbowl;
 
 public class App {
     public static void main(String[] args) {
-        Color red=new Color(255);
-        Color green=new Color(0,255);
-        Taste sweet=new Taste("sweet");
-        Taste sour=new Taste("sour");
-        Fruit apple1=new Fruit("apple",red,sweet);
-        Fruit apple2=new Fruit("apple",red,sweet);
-        Fruit grapes=new Fruit("grapes",green,sour);
-        Fruit orange=new Fruit("orange",red,sour);
-        Fruit mango=new Fruit("mango",green,sour);
+        Color red=new Color.Builder().setRed(255).createColor();
+        Color green=new Color.Builder().setGreen(255).createColor();
+        Taste sweet=new Taste.Builder("sweet").createTaste();
+        Taste sour=new Taste.Builder("sour").createTaste();
+        Fruit apple1=new Fruit.Builder("apple")
+                .setColor(red)
+                .setTaste(sweet)
+                .createFruit();
+        Fruit apple2=new Fruit.Builder("apple")
+                .setColor(red)
+                .setTaste(sweet)
+                .createFruit();
+        Fruit grapes=new Fruit.Builder("grapes")
+                .setColor(green)
+                .setTaste(sour)
+                .createFruit();
+        Fruit orange=new Fruit.Builder("orange")
+                .setColor(red)
+                .setTaste(sour)
+                .createFruit();
+        Fruit mango=new Fruit.Builder("mango")
+                .setColor(green)
+                .setTaste(sour)
+                .createFruit();
 
         Bowl bowl=new Bowl();
         bowl.addFruits(apple1);

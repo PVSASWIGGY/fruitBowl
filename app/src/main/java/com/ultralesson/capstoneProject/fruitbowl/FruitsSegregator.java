@@ -9,7 +9,7 @@ public class FruitsSegregator {
         List<String> namesArray = fruits.stream().map(fruit -> fruit.getName()).toList().stream().distinct().toList();
         for(int i=0;i<fruits.size();i++){
            int j=namesArray.indexOf(fruits.get(i).getName());
-           basket.addFruit(j%basket.getNoOfLayers(),fruits.get(i));
+           basket.addFruit(j,fruits.get(i));
         }
         return basket;
     }
@@ -18,7 +18,7 @@ public class FruitsSegregator {
         List<Color> colorsArray = fruits.stream().map(fruit -> fruit.getColor()).toList().stream().distinct().toList();
         for(int i=0;i<fruits.size();i++){
             int j=colorsArray.indexOf(fruits.get(i).getColor())-1;
-            basket.addFruit(j%basket.getNoOfLayers(),fruits.get(i));
+            basket.addFruit(j,fruits.get(i));
         }
         return basket;
     }
@@ -27,7 +27,7 @@ public class FruitsSegregator {
         List<Taste> tastesArray = fruits.stream().map(fruit -> fruit.getTaste()).toList().stream().distinct().toList();
         for(int i=0;i<fruits.size();i++){
             int j=tastesArray.indexOf(fruits.get(i).getTaste());
-            basket.addFruit(j% basket.getNoOfLayers(),fruits.get(i));
+            basket.addFruit(j,fruits.get(i));
         }
         return basket;
     }
